@@ -1,4 +1,4 @@
-.PHONY: all clean start
+.PHONY: start stop rebuild bash
 
 PROJECT_NAME := my_project# Project name variable
 USER := $(shell whoami)
@@ -11,6 +11,10 @@ start:
 	@echo "Starting containers using docker-compose with container name: $(CONTAINER_NAME)"
 	CONTAINER_NAME=$(CONTAINER_NAME) docker compose -f docker/docker-compose.yml up -d
 
+stop:
+	@echo "Stopping containers using docker-compose with container name: $(CONTAINER_NAME)"
+	CONTAINER_NAME=$(CONTAINER_NAME) docker compose -f docker/docker-compose.yml down 
+
 rebuild:
 	@echo "Rebuilding containers..."
 	CONTAINER_NAME=$(CONTAINER_NAME) PROJECT_NAME=$(PROJECT_NAME) docker compose -f docker/docker-compose.yml down
@@ -21,8 +25,3 @@ rebuild:
 bash: 
 	PROJECT_NAME=$(PROJECT_NAME) docker exec -it $(CONTAINER_NAME) bash
 
-all:
-	@echo "Building project: $(PROJECT_NAME)"
-
-clean:
-	@echo "Cleaning project: $(PROJECT_NAME)"
