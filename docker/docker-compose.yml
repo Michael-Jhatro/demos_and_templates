@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  my_project:
+    build: .
+    container_name: ${CONTAINER_NAME}
+    # Add other configurations as needed, like:
+    # ports:
+    #   - "8080:8080"
+    volumes:
+      - ../:/mnt
+    # environment:
+    #   - ENV_VAR=value
