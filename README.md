@@ -9,6 +9,10 @@ That's it! Honeslty you dont even need make!
 
 # Check out the make file for some commands to get you started
 
+If you use this as a template you will need to rename the project in two places
+1. pyproject.toml
+2. Makefile
+
 The two main ones you may want are:
 
 `make start`
