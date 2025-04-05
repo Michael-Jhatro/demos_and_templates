@@ -18,8 +18,8 @@ rebuild:
 	CONTAINER_NAME=$(CONTAINER_NAME) PROJECT_NAME=$(PROJECT_NAME) docker compose -f docker/docker-compose.yml up -d
 
 
-bash: start
-	docker exec -it $(CONTAINER_NAME) bash
+bash: 
+	PROJECT_NAME=$(PROJECT_NAME) docker exec -it $(CONTAINER_NAME) bash
 
 all:
 	@echo "Building project: $(PROJECT_NAME)"
