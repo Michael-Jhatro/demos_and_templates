@@ -6,8 +6,10 @@ ARG PROJECT_NAME
 RUN mkdir /$PROJECT_NAME
 WORKDIR /$PROJECT_NAME
 
+COPY pyproject.toml ./pyproject.toml
+
 # Install JupyterLab and other dependencies using pip
-RUN uv pip install --system jupyterlab notebook ipykernel
+RUN uv pip install --system -r pyproject.toml
 
 # # Create a non-root user for security
 # RUN useradd -m jupyteruser && \
