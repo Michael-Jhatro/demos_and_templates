@@ -1,7 +1,10 @@
 FROM ghcr.io/astral-sh/uv:python3.12-bookworm
 
+ARG PROJECT_NAME
+
 # Set up workdir
-WORKDIR /mnt
+RUN mkdir /$PROJECT_NAME
+WORKDIR /$PROJECT_NAME
 
 # Install JupyterLab and other dependencies using pip
 RUN uv pip install --system jupyterlab notebook ipykernel
